@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+font-connection = {git = "https://github.com/pimoroni/fonts-python",subdirectory = "font-connection"}
+font-fredoka-one = "*"
+fonts = "*"
+inky = {git = "https://github.com/pimoroni/inky.git",subdirectory = "library"}
+invoke = "*"
+numpy = "*"
+pillow = "*"
+rpi-gpio = "*"
+smbus2 = "*"
+spidev = '*'
+tabulate = "*"
