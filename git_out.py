@@ -25,7 +25,7 @@ INKY_DISPLAY = InkyWHAT(COLOUR)
 
 
 def get_user():
-    """retrieve handle of logged in user."""
+    """Retrieve handle of logged in user."""
     user_result = run('hub api user', hide=True)
     user_data = json.loads(user_result.stdout)
 
@@ -34,9 +34,9 @@ def get_user():
 
 
 def get_review_requests():
-    """retrieve pull requests with review requests.
+    """Retrieve Pull Requests with Review Requests.
 
-    returns:
+    Returns:
         dict: json object from api.
 
     """
@@ -83,7 +83,7 @@ def get_pull_request_grid():
 
 
 def main():
-    """use the github api to print pull requests with review requests."""
+    """Display open Pull Requests with Review Request on the InkyWHAT."""
     width = INKY_DISPLAY.WIDTH
     height = INKY_DISPLAY.HEIGHT
     middle = width / 2
