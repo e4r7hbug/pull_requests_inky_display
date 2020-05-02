@@ -23,26 +23,6 @@ FONT_TITLE_SIZE = 25
 COLOUR = 'red'
 INKY_DISPLAY = InkyWHAT(COLOUR)
 
-def reflow_quote(quote, width, font):
-    words = quote.split(" ")
-    reflowed = '"'
-    line_length = 0
-
-    for i in range(len(words)):
-        word = words[i] + " "
-        word_length = font.getsize(word)[0]
-        line_length += word_length
-
-        if line_length < width:
-            reflowed += word
-        else:
-            line_length = word_length
-            reflowed = reflowed[:-1] + "\n  " + word
-
-    reflowed = reflowed.rstrip() + '"'
-
-    return reflowed
-
 
 def get_user():
     """retrieve handle of logged in user."""
