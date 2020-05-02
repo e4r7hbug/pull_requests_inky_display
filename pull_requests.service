@@ -1,0 +1,12 @@
+[Unit]
+Description=Update InkyWHAT display with GitHub Pull Request information.
+After=network.target
+
+[Service]
+Environment=PATH=/home/pi/.local/bin  # Assuming GitHub `hub` installed here
+ExecStart=/home/pi/pull_requests_inky_display/git_out.py
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=default.target

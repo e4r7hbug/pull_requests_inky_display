@@ -87,9 +87,9 @@ chmod +x git_out.py
 Install and enable the Systemd Service:
 
 ```bash
-cp github_pull_requests.services ~/.local/systemd/user/
+cp pull_requests.services ~/.local/systemd/user/
 systemctl --user daemon-reload
-systemctl --user enable github_pull_requests
+systemctl --user enable pull_requests
 ```
 
 And make sure to allow for your user to run without needing an initial login
