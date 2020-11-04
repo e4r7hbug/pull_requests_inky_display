@@ -4,6 +4,9 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+black = "*"
+pycodestyle = "*"
+pydocstyle = "*"
 
 [packages]
 font-connection = {git = "https://github.com/pimoroni/fonts-python",subdirectory = "font-connection"}
