@@ -14,14 +14,14 @@ from tabulate import tabulate
 
 from pr_inky_display.git_requests import get_review_requests
 
-FIRA_CODE = '/home/pi/github/FiraCode/distr/ttf/FiraCode-Regular.ttf'
+FIRA_CODE = "/home/pi/github/FiraCode/distr/ttf/FiraCode-Regular.ttf"
 FONT = FIRA_CODE
 FONT_SIZE = 10
 
 FONT_TITLE = FredokaOne
 FONT_TITLE_SIZE = 25
 
-COLOUR = 'red'
+COLOUR = "red"
 INKY_DISPLAY = InkyWHAT(COLOUR)
 
 
@@ -31,23 +31,23 @@ def get_pull_request_grid():
 
     pull_requests = []
 
-    for pull_request in data['items']:
+    for pull_request in data["items"]:
         # "repository_url": "https://api.github.com/repos/Upgradetechops/terraform_modules",
-        parsed = urlparse(pull_request['repository_url'])
-        *_, org, repo = parsed.path.split('/')
+        parsed = urlparse(pull_request["repository_url"])
+        *_, org, repo = parsed.path.split("/")
 
         row = {
-            'org': org,
-            'repo': repo,
+            "org": org,
+            "repo": repo,
             # 'url': f'{org}/{repo}',
             # 'user': pull_request['user']['login'],
-            'number': pull_request['number'],
-            'title': pull_request['title'],
+            "number": pull_request["number"],
+            "title": pull_request["title"],
         }
 
         pull_requests.append(row)
 
-    grid = tabulate(pull_requests, headers='keys')  # , showindex=True)
+    grid = tabulate(pull_requests, headers="keys")  # , showindex=True)
     print(grid)
     return grid
 
@@ -61,7 +61,7 @@ def main():
     font = ImageFont.truetype(FONT, FONT_SIZE)
     font_title = ImageFont.truetype(FONT_TITLE, FONT_TITLE_SIZE)
 
-    title_text = 'Pull Requests'
+    title_text = "Pull Requests"
     title_width, title_height = font_title.getsize(title_text)
     title_x = middle - (title_width / 2)
     title_coordinates = (title_x, 0)
@@ -84,13 +84,13 @@ def main():
         else:
             previous_grid = grid
 
-        img = Image.new('P', (width, height))
+        img = Image.new("P", (width, height))
         draw = ImageDraw.Draw(img)
 
         title_background, title_color = title_color, title_background
 
         draw.rectangle(title_background_coordinates, fill=title_background)
-        draw.text(title_coordinates, 'Pull Requests', fill=title_color, font=font_title)
+        draw.text(title_coordinates, "Pull Requests", fill=title_color, font=font_title)
 
         draw.text(grid_coordinates, grid, fill=INKY_DISPLAY.BLACK, font=font)
 
@@ -101,5 +101,5 @@ def main():
         # INKY_DISPLAY.wait_for_window_close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
