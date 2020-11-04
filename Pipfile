@@ -20,3 +20,6 @@ rpi-gpio = "*"
 smbus2 = "*"
 spidev = '*'
 tabulate = "*"
+
+[pipenv]
+allow_prereleases = true
