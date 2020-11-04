@@ -56,30 +56,41 @@ pip3 install pipenv
 pipenv install --sequential --skip-lock  # Flags help speed this up slightly
 ```
 
-Enter the virtual environment and run the script:
+Enter the virtual environment and run the scripts:
 
 ```bash
 pipenv shell
-(env) ./git_out.py
+
+(env) git-pr-inky
+(env) python -m pr_inky_display.git_out  # alternative
+
+(env) git-requests
+(env) python -m pr_inky_display.git_requests  # alternative
 ```
 
 Or use the Pipenv command to run:
 
 ```bash
-pipenv run ./git_out.py
+pipenv run ./pr_inky_display/git_out.py
+pipenv run ./pr_inky_display/git_requests.py
 ```
 
 Or update the shebang line to use the virtual environment Python executable.
 
+```bash
+pipenv --venv
+/home/pi/.local/share/virtualenvs/pull_requests_inky_display-ur2-XW38
+```
+
 ```python
-#!/home/py/.local/share/virtualenvs/github_pull_requests-s3kjso/bin/python
+#!/home/pi/.local/share/virtualenvs/pull_requests_inky_display-ur2-XW38/bin/python
 ```
 
 And make sure the application is marked as executable.
 
 ```bash
-chmod +x git_out.py
-./git_out.py
+chmod +x pr_inky_display/git_out.py
+./pr_inky_display/git_out.py
 ```
 
 ## Automated Running With Systemd
