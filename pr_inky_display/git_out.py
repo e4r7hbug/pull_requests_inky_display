@@ -1,17 +1,18 @@
 #!/home/pi/.local/share/virtualenvs/github_pull_requests-6hmCc7eu/bin/python
 # -*- coding: utf-8 -*-
 """Print GitHub Pull Requests to InkyWHAT."""
-import json
 import time
 from urllib.parse import urlparse
 
 from fonts.otf import ConnectionIII
 from fonts.ttf import FredokaOne, Roboto
+
 # from inky import InkyMockWHAT as InkyWHAT
 from inky import InkyWHAT
-from invoke import run
 from PIL import Image, ImageDraw, ImageFont
 from tabulate import tabulate
+
+from pr_inky_display.git_requests import get_review_requests
 
 FIRA_CODE = '/home/pi/github/FiraCode/distr/ttf/FiraCode-Regular.ttf'
 FONT = FIRA_CODE
@@ -24,40 +25,9 @@ COLOUR = 'red'
 INKY_DISPLAY = InkyWHAT(COLOUR)
 
 
-def get_user():
-    """Retrieve handle of logged in user."""
-    user_result = run('hub api user', hide=True)
-    user_data = json.loads(user_result.stdout)
-
-    user = user_data['login']
-    return user
-
-
-def get_review_requests():
-    """Retrieve Pull Requests with Review Requests.
-
-    Returns:
-        dict: json object from api.
-
-    """
-    user = get_user()
-
-    result = run(
-        ('hub api search/issues'
-         f' --field "q=is:open is:pr review-requested:{user} archived:false"'
-         ' -X GET'),
-        hide=True,
-    )
-
-    data = json.loads(result.stdout)
-    return data
-
-
 def get_pull_request_grid():
     """Create grid table of Pull Request information."""
     data = get_review_requests()
-
-    # print(json.dumps(data['items'][0], indent=2))
 
     pull_requests = []
 
