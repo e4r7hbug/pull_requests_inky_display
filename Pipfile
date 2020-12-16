@@ -17,6 +17,7 @@ invoke = "*"
 numpy = "*"
 pillow = "*"
 pr-inky-display = {path = "."}
+pyyaml = "*"
 rpi-gpio = "*"
 smbus2 = "*"
 spidev = '*'
