@@ -6,7 +6,9 @@ will be refreshed.
 
 ## Requirements
 
-### Pimoroni Automated Setup
+### Pimoroni Inky Setup
+
+#### Pimoroni Automated Setup
 
 The automated installation provided by Pimoroni is really good about setting up
 a Raspberry Pi with everything.
@@ -15,9 +17,9 @@ a Raspberry Pi with everything.
 curl https://get.pimoroni.com/inky | bash
 ```
 
-### Manual Setup
+#### Manual Setup
 
-#### SPI
+##### SPI
 
 Enable the SPI pins for the Raspberry Pi GPIO.
 
@@ -26,7 +28,7 @@ sudo raspi-config nonint do_spi 0
 sudo raspi-config nonint get_spi  # Should return 0, 1 means disabled
 ```
 
-#### Numpy Libraries
+##### Numpy Libraries
 
 These base library packages are required to run a `numpy` in a proper Pipenv.
 If you are using `python3-numpy` provided by the system package manager, then
@@ -39,13 +41,40 @@ sudo apt install -y \
   libtiff5
 ```
 
-#### GitHub Hub
+### GitHub Authentication
 
-The Python code calls out to the `hub` command. Make sure to run the `hub`
-command to set up authentication.
+The code can use the configuration files for `gh` or `hub` CLIs.
+Configuration using one of the CLIs is recommended for ease of use and added
+functionality outside of this application. The environment variable
+`GITHUB_API_TOKEN` is also supported.
 
-1. Install https://hub.github.com/
-1. Try `hub api`
+Choose one of the following ways to authenticate with GitHub to get an
+authentication token.
+
+#### Install `gh` CLI
+
+Install the official GitHub CLI from https://cli.github.com/ and follow the
+web authentication workflow.
+
+#### Install `hub` CLI
+
+Install the unofficial `hub` CLI from https://hub.github.com/ and follow the
+web authentication workflow.
+
+#### Manually Create Personal Access Token
+
+1. Go to https://github.com/settings/tokens
+1. Generate a new token with permissions:
+
+    * repo
+
+1. Export the environment variable or use a
+  [.env](https://pipenv-fork.readthedocs.io/en/latest/advanced.html#automatic-loading-of-env)
+  file with the variable:
+
+    ```bash
+    GITHUB_API_TOKEN=293lj23l4kj2lk4j3223k4j
+    ```
 
 ## Running
 
