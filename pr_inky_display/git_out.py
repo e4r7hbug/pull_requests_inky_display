@@ -12,7 +12,7 @@ from inky import InkyWHAT
 from PIL import Image, ImageDraw, ImageFont
 from tabulate import tabulate
 
-from pr_inky_display.git_requests import get_review_requests
+from pr_inky_display.git_requests import get_review_requests_defaults
 
 FIRA_CODE = "/home/pi/github/FiraCode/distr/ttf/FiraCode-Regular.ttf"
 FONT = FIRA_CODE
@@ -27,7 +27,7 @@ INKY_DISPLAY = InkyWHAT(COLOUR)
 
 def get_pull_request_grid():
     """Create grid table of Pull Request information."""
-    data = get_review_requests()
+    data = get_review_requests_defaults()
 
     pull_requests = []
 
