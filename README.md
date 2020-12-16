@@ -127,7 +127,7 @@ chmod +x pr_inky_display/git_out.py
 Install and enable the Systemd Service:
 
 ```bash
-cp pull_requests.services ~/.local/systemd/user/
+cp pull_requests.services ~/.config/systemd/user/
 systemctl --user daemon-reload
 systemctl --user enable pull_requests
 ```
